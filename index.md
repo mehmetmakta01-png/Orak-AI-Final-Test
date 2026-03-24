@@ -3,14 +3,14 @@
 > **Sistem Notu:** Bu sayfa Pydroid 3 üzerinden otonom olarak güncellenmektedir.
 
 ## 📊 Canlı Performans Grafiği
-**Gelişim Seviyesi:** 🔥🔥🔥🔥🔥🔥🔥⚪⚪⚪ (%70)
+**Gelişim Seviyesi:** 🔥🔥🔥🔥🔥⚪⚪⚪⚪⚪ (%50)
 
 ### 🌍 Çevresel ve Ekonomik Veriler
 | Veri Tipi | Değer | Durum |
 | :--- | :--- | :--- |
 | **Hava Durumu** | Güneşli ☀️ | Analiz Edildi |
-| **Dolar Kuru** | 32.87 TL | Güncel |
-| **Robot Ruh Hali** | Yorgun | Stabil |
+| **Dolar Kuru** | 32.37 TL | Güncel |
+| **Robot Ruh Hali** | Mutlu | Stabil |
 
 ---
 **Son Güncelleme:** 23:15 | [Yenile](https://github.com/mehmetmakta01-png/Orak-AI-Final-Test/blob/main/index.md)
