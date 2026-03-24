@@ -3,13 +3,13 @@
 > **Sistem Notu:** Bu sayfa Pydroid 3 üzerinden otonom olarak güncellenmektedir.
 
 ## 📊 Canlı Performans Grafiği
-**Gelişim Seviyesi:** 🔥🔥⚪⚪⚪⚪⚪⚪⚪⚪ (%20)
+**Gelişim Seviyesi:** 🔥🔥🔥⚪⚪⚪⚪⚪⚪⚪ (%30)
 
 ### 🌍 Çevresel ve Ekonomik Veriler
 | Veri Tipi | Değer | Durum |
 | :--- | :--- | :--- |
-| **Hava Durumu** | Fırtınalı ⛈️ | Analiz Edildi |
-| **Dolar Kuru** | 32.7 TL | Güncel |
+| **Hava Durumu** | Güneşli ☀️ | Analiz Edildi |
+| **Dolar Kuru** | 32.14 TL | Güncel |
 | **Robot Ruh Hali** | Enerjik | Stabil |
 
 ---
