@@ -9,8 +9,8 @@
 | Veri Tipi | Değer | Durum |
 | :--- | :--- | :--- |
 | **Hava Durumu** | Karlı ❄️ | Analiz Edildi |
-| **Dolar Kuru** | 32.57 TL | Güncel |
-| **Robot Ruh Hali** | Mutlu | Stabil |
+| **Dolar Kuru** | 32.37 TL | Güncel |
+| **Robot Ruh Hali** | Yorgun | Stabil |
 
 ---
 **Son Güncelleme:** 22:02 | [Yenile](https://github.com/mehmetmakta01-png/Orak-AI-Final-Test/blob/main/index.md)
