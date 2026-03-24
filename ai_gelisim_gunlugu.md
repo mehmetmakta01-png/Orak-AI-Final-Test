@@ -6,3 +6,4 @@
 | 17:35:35 | Siber Güvenlik | Öğrenildi | Başarılı |
 | 17:36:07 | Yapay Sinir Ağları | Veri Tabanına Kaydedildi | Başarılı |
 | 17:36:39 | Bulut Bilişim | Analiz Tamamlandı | Başarılı |
+| 17:37:12 | Algoritma Optimizasyonu | Öğrenildi | Başarılı |
