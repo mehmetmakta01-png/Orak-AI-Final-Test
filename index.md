@@ -8,9 +8,9 @@
 ### 🌍 Çevresel ve Ekonomik Veriler
 | Veri Tipi | Değer | Durum |
 | :--- | :--- | :--- |
-| **Hava Durumu** | Güneşli ☀️ | Analiz Edildi |
-| **Dolar Kuru** | 32.74 TL | Güncel |
-| **Robot Ruh Hali** | Mutlu | Stabil |
+| **Hava Durumu** | Karlı ❄️ | Analiz Edildi |
+| **Dolar Kuru** | 32.6 TL | Güncel |
+| **Robot Ruh Hali** | Enerjik | Stabil |
 
 ---
-**Son Güncelleme:** 23:01 | [Yenile](https://github.com/mehmetmakta01-png/Orak-AI-Final-Test/blob/main/index.md)
+**Son Güncelleme:** 23:03 | [Yenile](https://github.com/mehmetmakta01-png/Orak-AI-Final-Test/blob/main/index.md)
