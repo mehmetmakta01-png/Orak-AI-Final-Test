@@ -1,19 +1,32 @@
 
     <!DOCTYPE html>
     <html lang="tr">
-    <head><meta charset="UTF-8"><title>Orak-AI | Zekâ Patlaması</title>
+    <head><meta charset="UTF-8">
     <style>
-        body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .ai-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); padding: 40px; border-radius: 30px; border: 2px solid #00ffcc; box-shadow: 0 0 50px #00ffcc66; text-align: center; max-width: 500px; }
-        h2 { color: #00ffcc; text-transform: uppercase; letter-spacing: 2px; }
-        .answer { font-size: 1.2rem; line-height: 1.6; color: #e0e0e0; font-style: italic; margin-top: 20px; }
-        .footer { font-size: 0.8rem; color: #666; margin-top: 30px; }
-    </style></head>
+        body { background: #050505; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .ai-box { border: 2px solid #00ffcc; padding: 30px; border-radius: 20px; box-shadow: 0 0 30px #00ffcc55; text-align: center; max-width: 80%; }
+        h1 { color: #00ffcc; font-size: 1.2rem; }
+        p { font-style: italic; font-size: 1.1rem; }
+        .speak-btn { background: #00ffcc; color: black; border: none; padding: 10px 20px; border-radius: 50px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+    </style>
+    </head>
     <body>
-        <div class="ai-card">
-            <h2>🖋️ Kalem Ne İşe Yarar?</h2>
-            <div class="answer">"Kalem, dünyayı değiştiren en güçlü silahtır patron. (Bağlantı tazeleniyor...)"</div>
-            <div class="footer">Orak-AI tarafından anlık olarak analiz edildi.</div>
+        <div class="ai-box">
+            <h1>🖋️ Sorgu: Kalem ne işe yarar?</h1>
+            <p id="ai-text">"Bağlantım zayıf ama zihnim açık patron!"</p>
+            <button class="speak-btn" onclick="konus()">🔊 SESLİ DİNLE</button>
         </div>
-    </body></html>
+
+        <script>
+            function konus() {
+                var msg = new SpeechSynthesisUtterance();
+                msg.text = document.getElementById('ai-text').innerText;
+                msg.lang = 'tr-TR';
+                window.speechSynthesis.speak(msg);
+            }
+            // Otomatik konuşma denemesi (Tarayıcı izin verirse)
+            window.onload = function() { setTimeout(konus, 1000); };
+        </script>
+    </body>
+    </html>
     
