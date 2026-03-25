@@ -1,44 +1,54 @@
 
     <!DOCTYPE html>
     <html lang="tr">
-    <head><meta charset="UTF-8"><title>ORAK-AI | VOICE COMMAND</title>
+    <head><meta charset="UTF-8"><title>ORAK-AI | SESLI KOMUT</title>
     <style>
-        body { background: #000; color: #00ffcc; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
-        .console { border: 2px solid #00ffcc; padding: 40px; border-radius: 50%; width: 300px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 0 50px #00ffcc44; position: relative; }
-        .mic-btn { background: #00ffcc; border: none; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0,255,204,0.7); } 70% { box-shadow: 0 0 0 20px rgba(0,255,204,0); } 100% { box-shadow: 0 0 0 0 rgba(0,255,204,0); } }
-        .wave { position: absolute; width: 100%; height: 100%; border: 1px solid #00ffcc; border-radius: 50%; opacity: 0.2; animation: orbit 10s linear infinite; }
-        @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        body { background: #000; color: #00ffcc; font-family: monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; text-align: center; }
+        .core { border: 2px solid #00ffcc; padding: 50px; border-radius: 50%; box-shadow: 0 0 30px #00ffcc44; }
+        .mic-btn { background: #00ffcc; border: none; width: 80px; height: 80px; border-radius: 50%; cursor: pointer; font-size: 2rem; }
+        #durum { margin-top: 20px; font-size: 0.8rem; color: #fff; }
     </style></head>
     <body>
-        <div class="wave"></div>
-        <div class="console">
-            <div style="font-size: 0.7rem; margin-bottom: 10px;">🕒 23:41</div>
+        <div class="core">
+            <div style="font-size:0.7rem;">00:01</div>
             <button class="mic-btn" onclick="dinle()">🎤</button>
-            <p id="durum" style="font-size: 0.8rem; margin-top: 15px;">DINLEMEK ICIN BAS</p>
-            <div id="ai-cevap" style="color: #fff; font-size: 0.9rem; margin-top: 10px; font-style: italic;">"Sesini duydum patron, ama bulutlar çok yoğun!"</div>
+            <p id="durum">SESINI DUYMAK ICIN BUTONA BAS</p>
+            <p id="cevap" style="font-style:italic;">"Sistem çevrimiçi, emirlerini bekliyorum patron."</p>
         </div>
 
         <script>
+            // SESLENME FONKSİYONU
             function speak(text) {
                 var u = new SpeechSynthesisUtterance(text);
-                u.lang = 'tr-TR'; window.speechSynthesis.speak(u);
+                u.lang = 'tr-TR'; 
+                window.speechSynthesis.speak(u);
             }
-            
+
+            // DİNLEME FONKSİYONU (Robotun Kulakları Burada Açılıyor)
             function dinle() {
                 var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
                 recognition.lang = 'tr-TR';
-                document.getElementById('durum').innerText = "DİNLİYORUM...";
                 
+                recognition.onstart = function() {
+                    document.getElementById('durum').innerText = "🎤 DİNLİYORUM, KONUŞ PATRON...";
+                };
+
+                recognition.onerror = function(event) {
+                    document.getElementById('durum').innerText = "❌ HATA: " + event.error;
+                    alert("Mikrofon izni vermemiş olabilirsin patron!");
+                };
+
                 recognition.onresult = function(event) {
                     var transcript = event.results[0][0].transcript;
                     document.getElementById('durum').innerText = "ANLAŞILDI: " + transcript;
-                    speak("Anladım patron, sisteme iletiyorum.");
-                    // Burada normalde bir API'ye veri gönderilir, biz simüle ediyoruz.
+                    speak("Anladım patron: " + transcript);
                 };
+
                 recognition.start();
             }
-            window.onload = function() { speak("Sesini duydum patron, ama bulutlar çok yoğun!"); };
+
+            // Sayfa açıldığında AI'nın cevabını sesli oku
+            window.onload = function() { speak(document.getElementById('cevap').innerText); };
         </script>
     </body></html>
     
