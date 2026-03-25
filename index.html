@@ -1,50 +1,44 @@
 
     <!DOCTYPE html>
     <html lang="tr">
-    <head><meta charset="UTF-8"><title>ORAK-AI | OBSERVER v6</title>
+    <head><meta charset="UTF-8"><title>ORAK-AI | VOICE COMMAND</title>
     <style>
-        body { background: #000; color: #00ffcc; font-family: 'Courier New', monospace; margin: 0; padding: 10px; display: grid; grid-template-columns: 1fr 2fr; gap: 15px; height: 100vh; }
-        .sidebar { border-right: 2px solid #00ffcc; padding-right: 15px; }
-        .main-view { position: relative; padding: 10px; }
-        .weather-box { background: rgba(0,255,204,0.1); padding: 15px; border-radius: 15px; text-align: center; border: 1px solid #00ffcc; margin-bottom: 20px; }
-        .ai-art-card { border: 1px solid #333; padding: 10px; border-radius: 10px; background: #050505; }
-        .ai-art-card img { width: 100%; border-radius: 5px; opacity: 0.7; border: 1px solid #00ffcc; }
-        .glitch-text { animation: glitch 2s infinite; font-weight: bold; font-size: 1.2rem; }
-        @keyframes glitch { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-        .btn { background: #00ffcc; color: #000; border: none; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        body { background: #000; color: #00ffcc; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
+        .console { border: 2px solid #00ffcc; padding: 40px; border-radius: 50%; width: 300px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 0 50px #00ffcc44; position: relative; }
+        .mic-btn { background: #00ffcc; border: none; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0,255,204,0.7); } 70% { box-shadow: 0 0 0 20px rgba(0,255,204,0); } 100% { box-shadow: 0 0 0 0 rgba(0,255,204,0); } }
+        .wave { position: absolute; width: 100%; height: 100%; border: 1px solid #00ffcc; border-radius: 50%; opacity: 0.2; animation: orbit 10s linear infinite; }
+        @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     </style></head>
     <body>
-        <div class="sidebar">
-            <div class="weather-box">
-                <div style="font-size: 2.5rem;">🌙</div>
-                <div style="font-size: 1.5rem; font-weight: bold;">14°C</div>
-                <div style="font-size: 0.7rem;">KONUM: ŞANLIURFA</div>
-            </div>
-            <h3>📊 PİYASA SİNYALİ</h3>
-            <div class="glitch-text">USD: 32.93 TL</div>
-            <hr style="border-color:#111">
-            <div class="ai-art-card">
-                <p style="font-size:0.7rem; color:#666">AI VİZYON ÇIKTISI:</p>
-                <img src="https://picsum.photos/seed/254/300/200?grayscale" alt="AI Art">
-                <p style="font-size:0.8rem; text-align:center;">"Siber Veri Akışı"</p>
-            </div>
-        </div>
-
-        <div class="main-view">
-            <h2 style="border-bottom: 2px solid #00ffcc;">📡 SİBER GÖZLEMCİ KOMUTASI</h2>
-            <div style="background: #111; padding: 20px; border-radius: 10px; min-height: 100px;">
-                <p id="status-msg" style="color:#fff; line-height: 1.6;">"Sistem aktif patron. Şanlıurfa semaları 14 derece. Piyasa dalgalanmaları AI tarafından analiz ediliyor. Strateji: Sabır ve Veri."</p>
-            </div>
-            <br>
-            <button class="btn" onclick="speak()">🔊 DURUM RAPORUNU DİNLE</button>
-            <div style="position: absolute; bottom: 20px; right: 20px; font-size: 0.8rem;">🕒 SON GÜNCELLEME: 23:36</div>
+        <div class="wave"></div>
+        <div class="console">
+            <div style="font-size: 0.7rem; margin-bottom: 10px;">🕒 23:41</div>
+            <button class="mic-btn" onclick="dinle()">🎤</button>
+            <p id="durum" style="font-size: 0.8rem; margin-top: 15px;">DINLEMEK ICIN BAS</p>
+            <div id="ai-cevap" style="color: #fff; font-size: 0.9rem; margin-top: 10px; font-style: italic;">"Sesini duydum patron, ama bulutlar çok yoğun!"</div>
         </div>
 
         <script>
-            function speak() {
-                var msg = new SpeechSynthesisUtterance(document.getElementById('status-msg').innerText);
-                msg.lang = 'tr-TR'; window.speechSynthesis.speak(msg);
+            function speak(text) {
+                var u = new SpeechSynthesisUtterance(text);
+                u.lang = 'tr-TR'; window.speechSynthesis.speak(u);
             }
+            
+            function dinle() {
+                var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                recognition.lang = 'tr-TR';
+                document.getElementById('durum').innerText = "DİNLİYORUM...";
+                
+                recognition.onresult = function(event) {
+                    var transcript = event.results[0][0].transcript;
+                    document.getElementById('durum').innerText = "ANLAŞILDI: " + transcript;
+                    speak("Anladım patron, sisteme iletiyorum.");
+                    // Burada normalde bir API'ye veri gönderilir, biz simüle ediyoruz.
+                };
+                recognition.start();
+            }
+            window.onload = function() { speak("Sesini duydum patron, ama bulutlar çok yoğun!"); };
         </script>
     </body></html>
     
