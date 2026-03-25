@@ -1,16 +1,14 @@
 # 🤖 Robotik Komuta Merkezi: Canlı Yayın
-        
-> **Sistem Notu:** Bu sayfa Pydroid 3 üzerinden otonom olarak güncellenmektedir.
+![Ziyaretçi Sayısı](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://mehmetmakta01-png.github.io/Orak-AI-Final-Test)
 
-## 📊 Canlı Performans Grafiği
-**Gelişim Seviyesi:** 🔥🔥🔥🔥⚪⚪⚪⚪⚪⚪ (%40)
+> **Sistem Notu:** Bu sayfa Pydroid 3 üzerinden otonom güncellenmektedir.
 
-### 🌍 Çevresel ve Ekonomik Veriler
+### 🌍 Canlı Şanlıurfa Verileri
 | Veri Tipi | Değer | Durum |
 | :--- | :--- | :--- |
-| **Hava Durumu** | Fırtınalı ⛈️ | Analiz Edildi |
-| **Dolar Kuru** | 32.05 TL | Güncel |
-| **Robot Ruh Hali** | Mutlu | Stabil |
+| **Hava Durumu** | Veri alınamadı ⚠️ | Gerçek Zamanlı ✅ |
+| **Gelişim Skoru** | 🔥🔥🔥 (%30) | Dinamik |
+| **Robot Durumu** | 🔋 Aktif | Stabil |
 
 ---
-**Son Güncelleme:** 23:16 | [Yenile](https://github.com/mehmetmakta01-png/Orak-AI-Final-Test/blob/main/index.md)
+**Son Güncelleme:** 10:31 | [Yenile](https://mehmetmakta01-png.github.io/Orak-AI-Final-Test/)
