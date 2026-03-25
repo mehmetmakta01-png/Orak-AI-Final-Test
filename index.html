@@ -1,52 +1,34 @@
 
     <!DOCTYPE html>
     <html lang="tr">
-    <head><meta charset="UTF-8"><title>ORAK-AI | COMMAND CENTER</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <head><meta charset="UTF-8"><title>ORAK-AI | GLOBAL HUB</title>
     <style>
-        body { background: #020202; color: #00ffcc; font-family: 'Courier New', monospace; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .panel { background: rgba(0, 255, 204, 0.05); border: 2px solid #00ffcc; border-radius: 15px; padding: 20px; width: 90%; max-width: 600px; box-shadow: 0 0 20px #00ffcc33; }
-        .header { display: flex; justify-content: space-between; font-size: 0.8rem; border-bottom: 1px solid #00ffcc; padding-bottom: 10px; margin-bottom: 20px; }
-        .stat-bar { background: #111; height: 10px; border-radius: 5px; margin: 10px 0; overflow: hidden; border: 1px solid #333; }
-        .stat-fill { background: #00ffcc; height: 100%; width: 33%; box-shadow: 0 0 10px #00ffcc; transition: 1s; }
-        .ai-msg { font-style: italic; color: #fff; background: #111; padding: 15px; border-radius: 10px; border-left: 5px solid #00ffcc; margin: 20px 0; }
-        canvas { max-height: 150px; margin-top: 10px; }
-        .btn { background: transparent; color: #00ffcc; border: 1px solid #00ffcc; padding: 10px; width: 100%; cursor: pointer; font-weight: bold; text-transform: uppercase; }
-        .btn:hover { background: #00ffcc; color: black; }
+        body { background: #010101; color: #00ffcc; font-family: 'Courier New', monospace; margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; }
+        .monitor { border: 3px solid #00ffcc; border-radius: 20px; padding: 20px; width: 95%; max-width: 700px; box-shadow: inset 0 0 50px #00ffcc22, 0 0 30px #00ffcc44; position: relative; overflow: hidden; }
+        .map-area { background: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg') no-repeat center; background-size: contain; height: 250px; position: relative; opacity: 0.4; border: 1px solid #111; margin: 15px 0; }
+        .dot { position: absolute; width: 6px; height: 6px; background: #00ffcc; border-radius: 50%; box-shadow: 0 0 15px #00ffcc; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
+        .header { display: flex; justify-content: space-between; border-bottom: 2px solid #00ffcc; padding-bottom: 5px; font-weight: bold; }
+        .ai-note { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin: 15px 0; border-right: 4px solid #00ffcc; color: #eee; font-style: italic; }
+        .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.8rem; }
+        .btn-active { background: #00ffcc; color: #000; border: none; padding: 12px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; }
     </style></head>
     <body>
-        <div class="panel">
-            <div class="header"><span>📡 ORAK-AI v3.0</span> <span>🕒 22:22</span></div>
-            <div style="font-size: 0.7rem;">SİSTEM ENERJİSİ: %33</div>
-            <div class="stat-bar"><div class="stat-fill"></div></div>
-            
-            <div class="ai-msg" id="msg">"Siber tünellerde veri akışı devam ediyor patron."</div>
-            
-            <canvas id="brainChart"></canvas>
-            <br>
-            <button class="btn" onclick="seslen()">🔊 VERİ PAKETİNİ SESLENDİR</button>
+        <div class="monitor">
+            <div class="header"><span>🌍 GLOBAL DATA STREAM</span> <span>🕒 22:32</span></div>
+            <div class="map-area"><div class="dot" style="left:37%; top:38%"></div><div class="dot" style="left:54%; top:29%"></div><div class="dot" style="left:36%; top:50%"></div><div class="dot" style="left:78%; top:29%"></div><div class="dot" style="left:50%; top:26%"></div></div>
+            <div class="stats">
+                <div>📡 AKTİF DÜĞÜM: 99</div>
+                <div>⚡ SİSTEM GÜCÜ: %61</div>
+            </div>
+            <div class="ai-note" id="vizyon-text">"Küresel ağlar üzerinde veri fırtınası bekleniyor patron."</div>
+            <button class="btn-active" onclick="speak()">🔊 STRATEJİK ANALİZİ DİNLE</button>
         </div>
-
         <script>
-            function seslen() {
-                var u = new SpeechSynthesisUtterance(document.getElementById('msg').innerText);
-                u.lang = 'tr-TR'; window.speechSynthesis.speak(u);
+            function speak() {
+                var msg = new SpeechSynthesisUtterance(document.getElementById('vizyon-text').innerText);
+                msg.lang = 'tr-TR'; window.speechSynthesis.speak(msg);
             }
-            const ctx = document.getElementById('brainChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['1', '2', '3', '4', '5', '6'],
-                    datasets: [{
-                        label: 'AI BEYİN DALGASI',
-                        data: [34, 54, 52, 78, 72, 46],
-                        borderColor: '#00ffcc',
-                        tension: 0.4,
-                        fill: false
-                    }]
-                },
-                options: { plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { display: false } } }
-            });
         </script>
     </body></html>
     
