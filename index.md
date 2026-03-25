@@ -5,8 +5,8 @@
 | Veri Tipi | Değer | Durum |
 | :--- | :--- | :--- |
 | **Hava Durumu** | +13Â°C Patchy rain nearby | Güncel |
-| **Gelişim Skoru** | 🔥🔥🔥 | %30 |
+| **Gelişim Skoru** | 🔥🔥🔥🔥 | %40 |
 | **Robot Ruhu** | Stabil | Aktif |
 
 ---
-**Son Güncelleme:** 11:31
+**Son Güncelleme:** 11:32
