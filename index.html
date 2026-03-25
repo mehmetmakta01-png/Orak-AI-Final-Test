@@ -1,49 +1,58 @@
 
     <!DOCTYPE html>
     <html lang="tr">
-    <head><meta charset="UTF-8"><title>ORAK-AI | COMMAND CENTER v5</title>
+    <head><meta charset="UTF-8"><title>ORAK-AI | SİBER KOMUTA</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body { background: #000; color: #00ffcc; font-family: 'Segoe UI', monospace; margin: 0; padding: 10px; display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 10px; height: 100vh; }
-        .box { border: 1px solid #00ffcc; border-radius: 15px; padding: 15px; background: rgba(0,255,204,0.02); box-shadow: 0 0 15px #00ffcc22; overflow: hidden; }
-        h3 { font-size: 0.8rem; border-bottom: 1px solid #00ffcc; padding-bottom: 5px; text-transform: uppercase; }
-        .big-val { font-size: 1.5rem; font-weight: bold; color: #fff; }
-        .news-item { font-size: 0.75rem; margin-bottom: 10px; border-left: 2px solid #00ffcc; padding-left: 5px; color: #ccc; }
-        .ai-center { grid-column: 2; text-align: center; border-width: 3px; display: flex; flex-direction: column; justify-content: center; }
-        .btn-command { background: #00ffcc; color: #000; border: none; padding: 15px; border-radius: 50px; font-weight: bold; cursor: pointer; margin-top: 20px; }
-        .task { font-size: 0.8rem; color: #ffcc00; margin: 5px 0; }
+        body { background: #020202; color: #00ffcc; font-family: 'Courier New', monospace; margin: 0; padding: 10px; display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 10px; height: 100vh; overflow: hidden; }
+        .panel { border: 1px solid #00ffcc; border-radius: 15px; padding: 15px; background: rgba(0,255,204,0.03); box-shadow: inset 0 0 20px #00ffcc22; }
+        h3 { font-size: 0.8rem; border-bottom: 1px solid #00ffcc; margin-top: 0; padding-bottom: 5px; text-transform: uppercase; }
+        .center-box { grid-column: 2; display: flex; flex-direction: column; justify-content: space-between; text-align: center; border-width: 2px; }
+        .map-placeholder { background: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg') no-repeat center; background-size: contain; height: 150px; opacity: 0.3; margin: 10px 0; }
+        .val { font-size: 1.2rem; color: #fff; font-weight: bold; }
+        .btn { background: #00ffcc; color: #000; border: none; padding: 12px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 100%; }
+        canvas { max-height: 120px; }
     </style></head>
     <body>
-        <div class="box">
-            <h3>💰 FİNANSAL VERİ</h3>
-            <div class="big-val">＄ 32.74 TL</div>
-            <div style="color:#666">Dolar/TL</div>
-            <br>
-            <div class="big-val">🏆 2147</div>
-            <div style="color:#666">Ons Altın ($)</div>
+        <div class="panel">
+            <h3>📈 PİYASA ANALİZİ</h3>
+            <div>USD/TRY: <span class="val">32.53</span></div>
+            <canvas id="usdChart"></canvas>
+            <div style="margin-top:10px;">ALTIN/ONS: <span class="val">2188$</span></div>
+            <canvas id="goldChart"></canvas>
         </div>
 
-        <div class="box ai-center">
-            <h3>🤖 ORAK-AI BEYNİ</h3>
-            <p id="ai-voice" style="font-style:italic; font-size: 1.1rem; color: #fff;">"Veri hatları yoğun patron, ama kontrol bende!"</p>
-            <button class="btn-command" onclick="speak()">🔊 RAPORU SESLENDİR</button>
-            <div style="margin-top:20px; font-size: 0.7rem; color: #00ffcc;">SİSTEM SAATİ: 23:01</div>
+        <div class="panel center-box">
+            <h3>🌍 KÜRESEL STRATEJİ MERKEZİ</h3>
+            <div class="map-placeholder"></div>
+            <p id="ai-text" style="font-size: 1rem; color: #fff; font-style: italic;">"Küresel veri hatlarında parazit var, kontrol bende patron!"</p>
+            <button class="btn" onclick="speak()">🔊 STRATEJİYİ SESLENDİR</button>
+            <div style="font-size: 0.7rem; margin-top: 10px;">SİSTEM SAATİ: 23:14 | KONUM: ŞANLIURFA</div>
         </div>
 
-        <div class="box">
-            <h3>📰 SİBER HABERLER</h3>
-            <div class="news-item">Kuantum bilgisayarlar veri şifreleme rekoru kırdı.</div>
-            <div class="news-item">Yapay Zeka devrimi Şanlıurfa'ya ulaştı.</div>
+        <div class="panel">
+            <h3>📅 GÖREV LİSTESİ</h3>
+            <div style="font-size: 0.8rem;">
+                <p>☐ Portföyü Gözden Geçir</p>
+                <p>☐ AI Modelini Optimize Et</p>
+                <p>☐ Karargah Verilerini Yedekle</p>
+            </div>
             <hr style="border:0; border-top:1px solid #333">
-            <h3>📅 GÖREVLER</h3>
-            <div class="task">☐ Toplantıyı Hatırlat</div>
-            <div class="task">☐ Kodları Güncelle</div>
+            <h3>📡 VERİ AKIŞI</h3>
+            <marquee scrollamount="3" style="font-size: 0.8rem;">Yapay Zeka modelleri güncelleniyor... Küresel borsa sinyalleri alınıyor... Mehmet Social Aktif...</marquee>
         </div>
 
         <script>
             function speak() {
-                var msg = new SpeechSynthesisUtterance(document.getElementById('ai-voice').innerText);
+                var msg = new SpeechSynthesisUtterance(document.getElementById('ai-text').innerText);
                 msg.lang = 'tr-TR'; window.speechSynthesis.speak(msg);
             }
+            const config = (data, color) => ({
+                type: 'line', data: { labels: ['','','','','','',''], datasets: [{ data: data, borderColor: color, fill: false, tension: 0.4 }] },
+                options: { plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } }
+            });
+            new Chart(document.getElementById('usdChart'), config([35, 39, 31, 34, 36, 39, 32], '#00ffcc'));
+            new Chart(document.getElementById('goldChart'), config([66, 75, 55, 78, 74, 58, 75], '#ffcc00'));
         </script>
     </body></html>
     
