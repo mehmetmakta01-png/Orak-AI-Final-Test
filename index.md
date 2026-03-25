@@ -7,8 +7,8 @@
 | Veri Tipi | Değer | Durum |
 | :--- | :--- | :--- |
 | **Hava Durumu** | Veri alınamadı ⚠️ | Gerçek Zamanlı ✅ |
-| **Gelişim Skoru** | 🔥🔥🔥 (%30) | Dinamik |
+| **Gelişim Skoru** | 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 (%100) | Dinamik |
 | **Robot Durumu** | 🔋 Aktif | Stabil |
 
 ---
-**Son Güncelleme:** 10:31 | [Yenile](https://mehmetmakta01-png.github.io/Orak-AI-Final-Test/)
+**Son Güncelleme:** 10:32 | [Yenile](https://mehmetmakta01-png.github.io/Orak-AI-Final-Test/)
