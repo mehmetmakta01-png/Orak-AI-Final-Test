@@ -1,48 +1,44 @@
 
     <!DOCTYPE html>
     <html lang="tr">
-    <head><meta charset="UTF-8"><title>ORAK-AI | KOMUTA</title>
+    <head><meta charset="UTF-8"><title>ORAK-AI | V8 STRONG</title>
     <style>
-        body { background: #000; color: #00ffcc; font-family: monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; text-align: center; }
-        .core { border: 2px solid #00ffcc; padding: 40px; border-radius: 20px; box-shadow: 0 0 30px #00ffcc44; width: 300px; }
-        .mic-btn { background: #00ffcc; border: none; width: 70px; height: 70px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; }
-        #durum { margin-top: 15px; font-size: 0.8rem; color: #fff; }
+        body { background: #000; color: #00ffcc; font-family: 'Courier New', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .shield { border: 3px solid #00ffcc; padding: 30px; border-radius: 25px; box-shadow: 0 0 50px #00ffcc33; text-align: center; width: 320px; position: relative; }
+        .mic-btn { background: #00ffcc; border: none; width: 80px; height: 80px; border-radius: 50%; cursor: pointer; font-size: 2rem; box-shadow: 0 0 20px #00ffcc; }
+        #status { margin-top: 20px; font-weight: bold; font-size: 0.9rem; }
+        .pulse { animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+        @keyframes pulse-ring { 0% { transform: scale(.33); } 80%, 100% { opacity: 0; } }
     </style></head>
     <body>
-        <div class="core">
-            <div style="font-size:0.7rem; margin-bottom:10px;">🕒 11:44</div>
-            <button class="mic-btn" onclick="dinle()">🎤</button>
-            <p id="durum">SESINI DUYMAK ICIN BUTONA BAS</p>
-            <p id="cevap" style="font-style:italic; border-top: 1px solid #333; padding-top: 10px;">"Sistem çevrimiçi, emirlerini bekliyorum patron."</p>
+        <div class="shield">
+            <div style="font-size:0.7rem; color:#444;">🛡️ SİBER ZIRH AKTİF | 12:03</div>
+            <br>
+            <button class="mic-btn pulse" onclick="dinle()">🎤</button>
+            <p id="status">KOMUT BEKLENİYOR...</p>
+            <div style="font-style:italic; color:#fff; border-top: 1px solid #111; padding-top:15px;">"Sinyal zayıf ama sadakatim tam patron!"</div>
         </div>
 
         <script>
-            function speak(text) {
-                var u = new SpeechSynthesisUtterance(text);
-                u.lang = 'tr-TR'; window.speechSynthesis.speak(u);
+            function speak(t) {
+                var u = new SpeechSynthesisUtterance(t); u.lang='tr-TR'; window.speechSynthesis.speak(u);
             }
-
             function dinle() {
-                var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-                recognition.lang = 'tr-TR';
-                
-                recognition.onstart = function() {
-                    document.getElementById('durum').innerText = "🎤 DİNLİYORUM...";
+                var rec = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                rec.lang = 'tr-TR';
+                rec.onstart = () => { document.getElementById('status').innerText = "📡 DİNLİYORUM..."; };
+                rec.onerror = (e) => { 
+                    if(e.error === 'not-allowed') alert("Patron! Adres çubuğundaki KİLİT 🔒 simgesine bas ve MİKROFONA İZİN VER!");
+                    document.getElementById('status').innerText = "❌ HATA: " + e.error; 
                 };
-
-                recognition.onresult = function(event) {
-                    var transcript = event.results[0][0].transcript;
-                    document.getElementById('durum').innerText = "ANLAŞILDI: " + transcript;
-                    speak("Anladım patron: " + transcript);
+                rec.onresult = (e) => {
+                    var t = e.results[0][0].transcript;
+                    document.getElementById('status').innerText = "EMİR: " + t;
+                    speak("Emredersiniz patron: " + t);
                 };
-
-                recognition.onerror = function(event) {
-                    document.getElementById('durum').innerText = "❌ HATA: " + event.error;
-                };
-
-                recognition.start();
+                rec.start();
             }
-            window.onload = function() { speak(document.getElementById('cevap').innerText); };
+            window.onload = () => { speak("Sistem güçlendirildi patron. Bağlantı stabil."); };
         </script>
     </body></html>
     
