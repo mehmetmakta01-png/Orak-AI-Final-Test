@@ -1,41 +1,33 @@
 
     <!DOCTYPE html>
     <html lang="tr">
-    <head><meta charset="UTF-8"><title>ORAK-AI | SESLI KOMUT</title>
+    <head><meta charset="UTF-8"><title>ORAK-AI | KOMUTA</title>
     <style>
         body { background: #000; color: #00ffcc; font-family: monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; text-align: center; }
-        .core { border: 2px solid #00ffcc; padding: 50px; border-radius: 50%; box-shadow: 0 0 30px #00ffcc44; }
-        .mic-btn { background: #00ffcc; border: none; width: 80px; height: 80px; border-radius: 50%; cursor: pointer; font-size: 2rem; }
-        #durum { margin-top: 20px; font-size: 0.8rem; color: #fff; }
+        .core { border: 2px solid #00ffcc; padding: 40px; border-radius: 20px; box-shadow: 0 0 30px #00ffcc44; width: 300px; }
+        .mic-btn { background: #00ffcc; border: none; width: 70px; height: 70px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; }
+        #durum { margin-top: 15px; font-size: 0.8rem; color: #fff; }
     </style></head>
     <body>
         <div class="core">
-            <div style="font-size:0.7rem;">00:01</div>
+            <div style="font-size:0.7rem; margin-bottom:10px;">🕒 11:32</div>
             <button class="mic-btn" onclick="dinle()">🎤</button>
             <p id="durum">SESINI DUYMAK ICIN BUTONA BAS</p>
-            <p id="cevap" style="font-style:italic;">"Sistem çevrimiçi, emirlerini bekliyorum patron."</p>
+            <p id="cevap" style="font-style:italic; border-top: 1px solid #333; padding-top: 10px;">"Sistem çevrimiçi, emirlerini bekliyorum patron."</p>
         </div>
 
         <script>
-            // SESLENME FONKSİYONU
             function speak(text) {
                 var u = new SpeechSynthesisUtterance(text);
-                u.lang = 'tr-TR'; 
-                window.speechSynthesis.speak(u);
+                u.lang = 'tr-TR'; window.speechSynthesis.speak(u);
             }
 
-            // DİNLEME FONKSİYONU (Robotun Kulakları Burada Açılıyor)
             function dinle() {
                 var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
                 recognition.lang = 'tr-TR';
                 
                 recognition.onstart = function() {
-                    document.getElementById('durum').innerText = "🎤 DİNLİYORUM, KONUŞ PATRON...";
-                };
-
-                recognition.onerror = function(event) {
-                    document.getElementById('durum').innerText = "❌ HATA: " + event.error;
-                    alert("Mikrofon izni vermemiş olabilirsin patron!");
+                    document.getElementById('durum').innerText = "🎤 DİNLİYORUM...";
                 };
 
                 recognition.onresult = function(event) {
@@ -44,10 +36,12 @@
                     speak("Anladım patron: " + transcript);
                 };
 
+                recognition.onerror = function(event) {
+                    document.getElementById('durum').innerText = "❌ HATA: " + event.error;
+                };
+
                 recognition.start();
             }
-
-            // Sayfa açıldığında AI'nın cevabını sesli oku
             window.onload = function() { speak(document.getElementById('cevap').innerText); };
         </script>
     </body></html>
