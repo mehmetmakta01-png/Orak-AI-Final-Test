@@ -16,3 +16,9 @@
 ### 📊 Canlı Sinyal (Pydroid 3)
 - **Durum:** Patron Mehmet Makta için dünya ağı taranıyor...
 - **Konum:** Şanlıurfa, Türkiye 📍
+
+
+---
+### 📊 ORAK1261 Siber İstatistikler
+![Stats](https://github-readme-stats.vercel.app/api?username=mehmetmakta01&show_icons=true&theme=radical&hide_border=true)
+![Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=mehmetmakta01&layout=compact&theme=radical&hide_border=true)
