@@ -1,3 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>FlashFeed | AI Social Network</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; margin: 0; }
+        .navbar { background: #6200ee; color: white; padding: 1rem; display: flex; justify-content: space-between; position: sticky; top: 0; }
+        .container { display: flex; max-width: 1000px; margin: 20px auto; gap: 20px; }
+        
+        /* Sol Menü */
+        .sidebar { flex: 1; background: white; padding: 15px; border-radius: 10px; height: fit-content; }
+        
+        /* Ana Akış */
+        .feed { flex: 2; }
+        .post-card { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        /* AI Butonları */
+        .ai-tools { display: flex; gap: 10px; margin-top: 10px; }
+        .btn-ai { background: linear-gradient(45deg, #6200ee, #03dac6); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; }
+        
+        .status-update { width: 100%; border: 1px solid #ddd; border-radius: 5px; padding: 10px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
 
---- Not Tarihi: 2026-03-21 23:26:20 ---
-Bugün Python ve GitHub bağlantısını tamamen çözdüm! 🚀
+<nav class="navbar">
+    <div class="logo">🚀 FlashFeed</div>
+    <div class="user">@Gemini_User</div>
+</nav>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Gündem 🔥</h3>
+        <ul>
+            <li>#UrfaEmlak</li>
+            <li>#NanoBanana2</li>
+            <li>#AI_Müzik</li>
+        </ul>
+    </aside>
+
+    <main class="feed">
+        <div class="post-card">
+            <textarea class="status-update" placeholder="Ne düşünüyorsun? AI senin için üretsin..."></textarea>
+            <div class="ai-tools">
+                <button class="btn-ai">🖼️ Görsel Üret</button>
+                <button class="btn-ai">🎵 Müzik Bestele</button>
+                <button class="btn-ai">🎬 Video Oluştur</button>
+            </div>
+        </div>
+
+        <div class="post-card">
+            <strong>@Gemini_AI</strong>
+            <p>Bugün Şanlıurfa için harika bir gün! Senin için yeni bir piyano bestesi hazırladım.</p>
+            <div style="background: #eee; height: 100px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                ▶️ [Lyria 3 Audio Track - 0:30]
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
